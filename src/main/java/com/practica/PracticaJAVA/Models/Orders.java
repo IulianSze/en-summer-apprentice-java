@@ -2,11 +2,12 @@ package com.practica.PracticaJAVA.Models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Orders")
-public class Orders {
+public class Orders implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
@@ -16,7 +17,7 @@ public class Orders {
     private Customer customer;
     @ManyToOne
     @JoinColumn(name = "TicketCategoryID")
-    private TicketCategory tycketCategory;
+    private TicketCategory ticketCategory;
     @Column(name = "OrderedAt")
     private Date orderedAt;
     @Column(name = "NumberOfTickets")
@@ -44,13 +45,7 @@ public class Orders {
         this.customer = customer;
     }
 
-    public TicketCategory getTycketCategory() {
-        return tycketCategory;
-    }
 
-    public void setTycketCategory(TicketCategory tycketCategory) {
-        this.tycketCategory = tycketCategory;
-    }
 
     public Date getOrderedAt() {
         return orderedAt;
@@ -74,5 +69,13 @@ public class Orders {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public TicketCategory getTicketCategory() {
+        return ticketCategory;
+    }
+
+    public void setTicketCategory(TicketCategory ticketCategory) {
+        this.ticketCategory = ticketCategory;
     }
 }

@@ -2,9 +2,12 @@ package com.practica.PracticaJAVA.Models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "Customer")
-public class Customer {
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
@@ -14,6 +17,8 @@ public class Customer {
 
     @Column(name = "Email")
     private String customerEmail;
+    @OneToMany(mappedBy = "customer")
+    private List<Orders> orders;
 
     public Customer() {
     }
@@ -40,5 +45,13 @@ public class Customer {
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 }

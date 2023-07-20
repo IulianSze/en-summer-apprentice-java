@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Event")
-public class Event {
+public class Event implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer eventId;
+    private Integer eventID;
 
     @ManyToOne
     @JoinColumn(name = "VenueID")
@@ -29,16 +30,18 @@ public class Event {
     private Date startDate;
     @Column(name = "EndDate")
     private Date endDate;
+    @OneToMany(mappedBy = "event")
+    private List<TicketCategory> ticketCategories;
 
     public Event() {
     }
 
     public Integer getEventId() {
-        return eventId;
+        return eventID;
     }
 
     public void setEventId(Integer eventId) {
-        this.eventId = eventId;
+        this.eventID = eventId;
     }
 
     public Venue getVenue() {
@@ -87,6 +90,14 @@ public class Event {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public List<TicketCategory> getTicketCategories() {
+        return ticketCategories;
+    }
+
+    public void setTicketCategories(List<TicketCategory> ticketCategories) {
+        this.ticketCategories = ticketCategories;
     }
 }
 

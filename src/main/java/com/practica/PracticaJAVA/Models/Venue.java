@@ -1,6 +1,7 @@
 package com.practica.PracticaJAVA.Models;
-
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Venue")
@@ -17,6 +18,9 @@ public class Venue {
 
     @Column(name = "Capacity")
     private Integer capacity;
+
+    @OneToMany(mappedBy = "venue")
+    private List<Event> events;
 
     public Venue() {
     }
@@ -51,5 +55,13 @@ public class Venue {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

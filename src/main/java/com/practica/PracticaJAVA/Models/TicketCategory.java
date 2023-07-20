@@ -2,6 +2,8 @@ package com.practica.PracticaJAVA.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TicketCategory")
 public class TicketCategory {
@@ -18,6 +20,10 @@ public class TicketCategory {
 
     @Column(name = "Price")
     private Integer ticketPrice;
+
+    @OneToMany(mappedBy = "ticketCategory")
+    private List<Orders> orders;
+
 
     public TicketCategory(){
     }
@@ -52,5 +58,13 @@ public class TicketCategory {
 
     public void setTicketPrice(Integer ticketPrice) {
         this.ticketPrice = ticketPrice;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 }
