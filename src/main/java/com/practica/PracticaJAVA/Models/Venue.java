@@ -1,8 +1,15 @@
 package com.practica.PracticaJAVA.Models;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Venue")
 public class Venue {
@@ -19,49 +26,7 @@ public class Venue {
     @Column(name = "Capacity")
     private Integer capacity;
 
-    @OneToMany(mappedBy = "venue")
-    private List<Event> events;
+//    @OneToMany(mappedBy = "venue")
+//    private List<Event> events;
 
-    public Venue() {
-    }
-
-    public Integer getVenueId() {
-        return venueId;
-    }
-
-    public void setVenueId(Integer venueId) {
-        this.venueId = venueId;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
 }

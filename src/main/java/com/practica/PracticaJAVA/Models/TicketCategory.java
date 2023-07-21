@@ -1,9 +1,16 @@
 package com.practica.PracticaJAVA.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "TicketCategory")
 public class TicketCategory {
@@ -21,50 +28,7 @@ public class TicketCategory {
     @Column(name = "Price")
     private Integer ticketPrice;
 
-    @OneToMany(mappedBy = "ticketCategory")
-    private List<Orders> orders;
+//    @OneToMany(mappedBy = "ticketCategory")
+//    private List<Orders> orders;
 
-
-    public TicketCategory(){
-    }
-
-    public Integer getTicketCategoryId() {
-        return ticketCategoryId;
-    }
-
-    public void setTicketCategoryId(Integer ticketCategoryId) {
-        this.ticketCategoryId = ticketCategoryId;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public String getTicketCategoryDescription() {
-        return ticketCategoryDescription;
-    }
-
-    public void setTicketCategoryDescription(String ticketCategoryDescription) {
-        this.ticketCategoryDescription = ticketCategoryDescription;
-    }
-
-    public Integer getTicketPrice() {
-        return ticketPrice;
-    }
-
-    public void setTicketPrice(Integer ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-    public List<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
-    }
 }
